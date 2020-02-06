@@ -1,0 +1,11 @@
+{% extends 'DWHLegator/base.html' %}
+{% block content %}
+<table>
+    <tr><th>Ид:</th><td>{{ employees.key }}</td></tr>
+    <tr><th>Ф.И.О.</th></th><td>{{ employees.name }}</td></tr>
+    <tr><th>Возраст:</th><td>{{ employees.age }}</td></tr>
+    <tr><th>Должность:</th><td>{{ employees.position }}</td></tr>
+    <tr><th>Заработная плата:</th><td>{{ employees.salary }}</td></tr>
+    <tr><th>Бонус:</th><td>{{ employees.bonus }}</td></tr>
+</table>
+{% endblock %}

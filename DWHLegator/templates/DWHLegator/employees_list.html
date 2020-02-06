@@ -1,0 +1,9 @@
+{% extends 'DWHLegator/base.html' %}
+    {% block content %}
+        <table>
+            <tr><th>Ид:</th><th>Ф.И.О.:</th></tr>
+	        {% for emp in employees %}
+            <tr><td><a href="{% url 'employee_detail' pk=emp.pk %}">{{ emp.key }}</a></td><td>{{ emp.name }}</td></tr>
+            {% endfor %}
+        </table>
+    {% endblock %}

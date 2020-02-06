@@ -18,4 +18,4 @@ class Employee(models.Model):
         self.safe()
 
     def __str__(self):
-        return """<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"""%(self.key,self.name,self.age,self.position,self.salary,self.bonus)
+        return """key=%s: (name=%s, age=%s, position=%s salary=%s, bonus=%s"""%(self.key,self.name,self.age,self.position,self.salary,self.bonus)
