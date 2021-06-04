@@ -3,3 +3,4 @@
 .spyproject/*
 DWHLegator/__pycache__/*
 DWHLegator/migrations/__pycache__/*
+DWHLegatorSite/__pycache__/*
