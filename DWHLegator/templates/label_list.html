@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load mptt_tags %}
+{% block content %}
+<ul><a href="{% url 'label_add' %}"><b>Добавить</b></a><b> | </b>
+    <a href="{% url 'label_import' %}"><b>Импортировать</b></a><b> | </b>
+	<a href="{% url 'label_truncate' %}"><b>Очистить все</b></a>
+</ul>
+<ul class="root">
+    {% recursetree labels %}
+        <li><i>
+            <a href="{% url 'label_detail' pk=node.pk %}">{{ node.caption }}{% if node.checked_out_by is not Null %} <span style="color: Blue">(Взято на изменение: {{ node.checked_out_by }} {{ node.checked_out }})</span>{% endif %}</a>
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </i></li>
+    {% endrecursetree %}
+</ul>
+{% endblock %}

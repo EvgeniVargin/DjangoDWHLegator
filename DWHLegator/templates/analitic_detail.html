@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="analitic_detail">
+		<ul><a href="{% url 'analitic_edit' pk=analitic.pk %}"><b>Редактировать</b></a><b> | </b>
+		    <a href="{% url 'analitic_del' pk=analitic.pk %}"><b>Удалить</b></a><b> | </b>
+			<a href="{% url 'analitic_checkout' pk=analitic.pk %}"><b>CheckOUT</b></a><b> | </b>
+			<a href="{% url 'analitic_checkin' pk=analitic.pk %}"><b>CheckIN</b></a>
+	     </ul>
+        <ul><a href="{% url 'analitic_list' %}">Назад к справочнику аналитик</a></ul>
+		{% if analitic.checked_out_by is not Null %}
+		 <ul><table>
+			<tr><th class="th_checkout">{{ analitic.get_checked_out_label }}</th><td class="td_checkout">{{ analitic.checked_out }}</td></tr>
+			<tr><th class="th_checkout">{{ analitic.get_checked_out_by_label }}</th><td class="td_checkout">{{ analitic.checked_out_by }}</td></tr>
+		 </table></ul>
+		{% endif %}
+        <ul><h3>({{ analitic.anlt_code }}) - {{ analitic.anlt_name }}</h3></ul>
+		 <ul><table>
+			<tr><th>Дата начала:</th><td>{{ analitic.effective_start }}</td></tr>
+			<tr><th>Дата окончания:</th><td>{{ analitic.effective_end }}</td></tr>
+			<tr><th>Код:</th><td>{{ analitic.anlt_code }}</td></tr>
+			<tr><th>Наименование:</th><td>{{ analitic.anlt_name }}</td></tr>
+			<tr><th>Архивная:</th><td>{{ analitic.get_archive_flg_display }}</td></tr>
+			<tr><th>Сущность:</th><td>{{ analitic.entity_id.entity_name }}</td></tr>
+			<tr><th>Тип данных:</th><td>{{ analitic.data_type }}</td></tr>
+			<tr><th>SQL для раскраски фактов:</th><td>{{ analitic.anlt_sql }}</td></tr>
+			<tr><th>Альяс:</th><td>{{ analitic.anlt_alias }}</td></tr>
+			<tr><th>Описание альяса:</th><td>{{ analitic.anlt_alias_descr }}</td></tr>
+			<tr><th>SQL для импорта спецификации:</th><td>{{ analitic.spec_import_sql }}</td></tr>
+			<tr><th>{{ analitic.get_deleted_label }}</th><td>{{ analitic.get_deleted_display }}</td></tr>
+			<tr><th>{{ analitic.get_created_label }}</th><td>{{ analitic.created }}</td></tr>
+			<tr><th>{{ analitic.get_created_by_label }}</th><td>{{ analitic.created_by }}</td></tr>
+			<tr><th>{{ analitic.get_modified_label }}</th><td>{{ analitic.modified }}</td></tr>
+			<tr><th>{{ analitic.get_modified_by_label }}</th><td>{{ analitic.modified_by }}</td></tr>
+			<tr><th>{{ analitic.get_checked_out_label }}</th><td>{{ analitic.checked_out }}</td></tr>
+			<tr><th>{{ analitic.get_checked_out_by_label }}</th><td>{{ analitic.checked_out_by }}</td></tr>
+		 </table></ul>
+    </div>
+{% endblock %}

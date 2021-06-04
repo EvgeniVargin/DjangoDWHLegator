@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="sign_detail">
+		<ul><a href="{% url 'sign_edit' pk=sign.pk %}"><b>Редактировать</b></a><b> | </b>
+		    <a href="{% url 'sign_del' pk=sign.pk %}"><b>Удалить</b></a><b> | </b>
+			<a href="{% url 'sign_checkout' pk=sign.pk %}"><b>CheckOUT</b></a><b> | </b>
+			<a href="{% url 'sign_checkin' pk=sign.pk %}"><b>CheckIN</b></a>
+	     </ul>
+        <ul><a href="{% url 'sign_list' %}">Назад к справочнику показателей</a></ul>
+		{% if sign.checked_out_by is not Null %}
+		 <ul><table>
+			<tr><th class="th_checkout">{{ sign.get_checked_out_label }}</th><td class="td_checkout">{{ sign.checked_out }}</td></tr>
+			<tr><th class="th_checkout">{{ sign.get_checked_out_by_label }}</th><td class="td_checkout">{{ sign.checked_out_by }}</td></tr>
+		 </table></ul>
+		{% endif %}
+        <ul><h3>({{ sign.sign_name }}) - {{ sign.sign_descr }}</h3></ul>
+		 <ul><table>
+			<tr><th>Наименование показателя:</th><td>{{ sign.sign_name }}</td></tr>
+			<tr><th>Описание показателя:</th><td>{{ sign.sign_descr }}</td></tr>
+			<tr><th>Архивный:</th><td>{{ sign.get_archive_flg_display }}</td></tr>
+			<tr><th>Тип данных:</th><td>{{ sign.data_type }}</td></tr>
+			<tr><th>Способ хранения:</th><td>{{ sign.get_hist_flg_display }}</td></tr>
+			<tr><th>SQL для расчета за одну дату:</th><td>{{ sign.sign_sql }}</td></tr>
+			<tr><th>SQL для массового расчета:</th><td>{{ sign.mass_sql }}</td></tr>
+			<tr><th>Сущность:</th><td>{{ sign.entity_id.entity_name }}</td></tr>
+			<tr><th>Доп. условия для запуска расчета:</th><td>{{ sign.condition }}</td></tr>
+			<tr><th>{{ sign.get_deleted_label }}</th><td>{{ sign.get_deleted_display }}</td></tr>
+			<tr><th>{{ sign.get_created_label }}</th><td>{{ sign.created }}</td></tr>
+			<tr><th>{{ sign.get_created_by_label }}</th><td>{{ sign.created_by }}</td></tr>
+			<tr><th>{{ sign.get_modified_label }}</th><td>{{ sign.modified }}</td></tr>
+			<tr><th>{{ sign.get_modified_by_label }}</th><td>{{ sign.modified_by }}</td></tr>
+			<tr><th>{{ sign.get_checked_out_label }}</th><td>{{ sign.checked_out }}</td></tr>
+			<tr><th>{{ sign.get_checked_out_by_label }}</th><td>{{ sign.checked_out_by }}</td></tr>
+		 </table></ul>
+    </div>
+{% endblock %}

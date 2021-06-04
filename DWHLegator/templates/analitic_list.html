@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul><h3>Справочник аналитик</h3></ul>
+<ul><a href="{% url 'analitic_add' %}"><b>Добавить</b></a><b> | </b>
+    <a href="{% url 'analitic_import' %}"><b>Импортировать</b></a><b> | </b>
+	<a href="{% url 'analitic_truncate' %}"><b>Очистить все</b></a></ul>
+<ul class="root">
+{% for analitic in analitics %}
+        <li>
+            <a href="{% url 'analitic_detail' pk=analitic.pk %}">({{ analitic.anlt_code }}) {{ analitic.anlt_name }}{% if analitic.checked_out_by is not Null %} <span style="color: Blue">(Взято на изменение: {{ analitic.checked_out_by }} {{ analitic.checked_out }})</span>{% endif %}</a>
+        </li>
+{% endfor %}
+</ul>
+{% endblock %}

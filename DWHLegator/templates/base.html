@@ -1,0 +1,22 @@
+{% load static %}
+<html>
+    <head>
+        <title>КРОХА</title>
+		<link  rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"  crossorigin="anonymous">
+		<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+		<link rel="stylesheet" href="{% static 'css/menus.css' %}">
+    </head>
+    <body>
+	    <div class="div_usr">
+			{% if request.user.is_authenticated %}<span style="color: MidnightBlue">Пользователь: </span><b><span style="color: Blue">{{ request.user.username }}</span></b><span style="color: MidnightBlue"> | </span><a href="{% url 'logout' %}">Выйти</a>{% endif %}
+		</div>
+        <div>
+            <ul><h2><a href="{% url 'homepage' %}">КРОХА (Комплексное Решение по Организации Хранилищ для Аналитики)</a></h2></ul><br/>
+        </div>
+		
+        <div>
+        {% block content %}
+        {% endblock %}
+        </div>
+    </body>
+</html>

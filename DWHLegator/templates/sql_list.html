@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul><h3>Справочник SQL-запросов</h3></ul>
+<ul><a href="{% url 'sql_add' %}"><b>Добавить</b></a></ul>
+<ul class="root">
+{% for sql in sqls %}
+        <li>
+            <a href="{% url 'sql_detail' pk=sql.pk %}">{{ sql.sql_name }}{% if sql.checked_out_by is not Null %} <span style="color: Blue">(Взято на изменение: {{ sql.checked_out_by }} {{ sql.checked_out }})</span>{% endif %}</a>
+        </li>
+{% endfor %}
+</ul>
+{% endblock %}

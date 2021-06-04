@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="entity_detail">
+		<ul><a href="{% url 'entity_edit' pk=entity.pk %}"><b>Редактировать</b></a><b> | </b>
+		    <a href="{% url 'entity_del' pk=entity.pk %}"><b>Удалить</b></a><b> | </b>
+			<a href="{% url 'entity_checkout' pk=entity.pk %}"><b>CheckOUT</b></a><b> | </b>
+			<a href="{% url 'entity_checkin' pk=entity.pk %}"><b>CheckIN</b></a>
+	    </ul>
+        <ul><a href="{% url 'entity_list' %}">Назад к справочнику сущностей</a></ul>
+		{% if entity.checked_out_by is not Null %}
+		 <ul><table>
+			<tr><th class="th_checkout">{{ entity.get_checked_out_label }}</th><td class="td_checkout">{{ entity.checked_out }}</td></tr>
+			<tr><th class="th_checkout">{{ entity.get_checked_out_by_label }}</th><td class="td_checkout">{{ entity.checked_out_by }}</td></tr>
+		 </table></ul>
+		{% endif %}
+		<ul><h3>{{ entity.entity_name }}</h3></ul>
+		<ul><table>
+			<tr><th style="width:20%">Родитель:</th><td>{{ entity.parent.entity_name }}</td></tr>
+			<tr><th>Таблица хранения по датам:</th><td>{{ entity.fct_table_name }}</td></tr>
+			<tr><th>Таблица хранения периодами:</th><td>{{ entity.hist_table_name }}</td></tr>
+			<tr><th>Временная таблица:</th><td>{{ entity.tmp_table_name }}</td></tr>
+			<tr><th>Аналитика:</th><td>{{ entity.get_anlt_flg_display }}</td></tr>
+			<tr><th>{{ entity.get_deleted_label }}</th><td>{{ entity.get_deleted_display }}</td></tr>
+			<tr><th>{{ entity.get_created_label }}</th><td>{{ entity.created }}</td></tr>
+			<tr><th>{{ entity.get_created_by_label }}</th><td>{{ entity.created_by }}</td></tr>
+			<tr><th>{{ entity.get_modified_label }}</th><td>{{ entity.modified }}</td></tr>
+			<tr><th>{{ entity.get_modified_by_label }}</th><td>{{ entity.modified_by }}</td></tr>
+			<tr><th>{{ entity.get_checked_out_label }}</th><td>{{ entity.checked_out }}</td></tr>
+			<tr><th>{{ entity.get_checked_out_by_label }}</th><td>{{ entity.checked_out_by }}</td></tr>
+		</table></ul>
+    </div>
+{% endblock %}

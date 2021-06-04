@@ -1,0 +1,80 @@
+﻿h1,h2,h3,h4,h5,a,a:hover,label {
+    color: Midnightblue;
+}
+
+th a,th a:hover {
+	color: White;
+}
+
+table {
+	border-collapse: collapse; /*убираем пустые промежутки между ячейками*/
+	font-size: 12px;
+}
+
+th {
+	background-color: Midnightblue;
+	color: White;
+	border: 1px solid White;
+	text-transform: uppercase;
+	padding: 10px 10px;
+}
+
+td {
+    border: 1px solid Midnightblue; /*устанавливаем для таблицы внешнюю границу серого цвета толщиной 1px*/
+	color: Midnightblue;
+	padding: 10px 10px;
+}
+
+.th_checkout {
+	background-color: MediumBlue;
+}
+
+.td_checkout {
+	border: 1px solid MediumBlue;
+	color: MediumBlue;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    resize: vertical;
+	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+input:hover {
+    box-shadow:0 0 15px 4px DarkGray;
+}
+
+form p label {
+    padding: 12px 12px 12px 0;
+	font-weight: bold;
+    display: inline-block;
+}
+
+input[type=submit] {
+    background-color: Midnightblue;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+.btn-primary, .btn {
+	color: White;
+	background-color: Midnightblue;
+	border-color: Midnightblue;
+}
+
+.btn-primary:hover, .btn:hover {
+	color: White;
+	background-color: Blue;
+	border-color: Blue;
+}
+.div_usr {
+	text-align:Right;
+	padding: 10px;
+}

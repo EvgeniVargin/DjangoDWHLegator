@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul><h1>SQLlist:</h1></ul>
+	{% if error_message %}<p><b>{{ error_message }}</b></p>{% endif %}
+    <ul><form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Сохранить</button>
+    </form></ul>
+{% endblock %}

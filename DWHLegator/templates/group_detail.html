@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="group_detail">
+		<ul><a href="{% url 'group_edit' pk=group.pk %}"><b>Редактировать</b></a><b> | </b>
+		    <a href="{% url 'group_del' pk=group.pk %}"><b>Удалить</b></a><b> | </b>
+			<a href="{% url 'group_checkout' pk=group.pk %}"><b>CheckOUT</b></a><b> | </b>
+			<a href="{% url 'group_checkin' pk=group.pk %}"><b>CheckIN</b></a>
+	     </ul>
+        <ul><a href="{% url 'group_list' %}">Назад к справочнику групп</a></ul>
+		{% if group.checked_out_by is not Null %}
+		 <ul><table>
+			<tr><th class="th_checkout">{{ group.get_checked_out_label }}</th><td class="td_checkout">{{ group.checked_out }}</td></tr>
+			<tr><th class="th_checkout">{{ group.get_checked_out_by_label }}</th><td class="td_checkout">{{ group.checked_out_by }}</td></tr>
+		 </table></ul>
+		{% endif %}
+         <ul><h3>{{ group.group_name }}</h3></ul>
+		 <ul><table>
+			<tr><th style="width:20%">Родитель:</th><td>{{ group.parent.group_name }}</td></tr>
+			<tr><th>Период хранения:</th><td>{{ group.strg_period }}</td></tr>
+			<tr><th>Единицы измерения периода хранения:</th><td>{{ group.get_strg_period_type_display }}</td></tr>
+			<tr><th>{{ group.get_deleted_label }}</th><td>{{ group.get_deleted_display }}</td></tr>
+			<tr><th>{{ group.get_created_label }}</th><td>{{ group.created }}</td></tr>
+			<tr><th>{{ group.get_created_by_label }}</th><td>{{ group.created_by }}</td></tr>
+			<tr><th>{{ group.get_modified_label }}</th><td>{{ group.modified }}</td></tr>
+			<tr><th>{{ group.get_modified_by_label }}</th><td>{{ group.modified_by }}</td></tr>
+			<tr><th>{{ group.get_checked_out_label }}</th><td>{{ group.checked_out }}</td></tr>
+			<tr><th>{{ group.get_checked_out_by_label }}</th><td>{{ group.checked_out_by }}</td></tr>
+		 </table></ul>
+    </div>
+{% endblock %}
